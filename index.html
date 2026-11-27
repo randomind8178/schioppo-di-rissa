@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Schioppo di Rissa VZ · Il gioco</title>
+<meta name="description" content="Il GTA che nessuno aveva chiesto. Finalmente. Con Vasco e la sua banda di amici.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: la pagina promozionale di un videogioco da edicola, presa troppo sul serio da chi l'ha fatta
+COLOUR and TYPE: come il gioco e la copertina: notte viola, rosa neon, arancio tramonto, ciano; Anton per i titoli, Rubik per il resto
+LAYOUT: copertina in alto, poi recensioni finte, il cast a schede, cosa c'è nel gioco, requisiti; una colonna su telefono
+*/
+:root{color-scheme:dark;--bg:#120c1a;--ink:#f3f1ea;--muted:#b3a9c4;--p:#ff4fd8;--o:#ff9a3c;--c:#3ee8ff;--y:#ffd23f;--card:#1b1526;--line:#33284a}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Rubik,system-ui,sans-serif}
+a{color:var(--c)}
+h1,h2,h3{font-family:Anton,Impact,sans-serif;font-weight:400;line-height:1.02;margin:0;letter-spacing:.01em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.kicker{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:800;text-decoration:none;border-radius:12px;padding:14px 22px;min-height:48px}
+.btn.primary{background:linear-gradient(90deg,var(--o),var(--p));color:#1a0b1f}
+.btn.primary:hover{filter:brightness(1.1)}
+.btn.ghost{background:#2e2440;color:var(--ink)}
+.btn.ghost:hover{background:#3b2f52}
+.btn:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+.small{font-size:14px;color:var(--muted)}
+
+/* copertina */
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:56px 0 64px}
+.hero::before{content:"";position:absolute;inset:-60px;background:url("schioppo%20VZ.jpeg") center/cover;filter:blur(22px) saturate(1.3) brightness(.42);z-index:-1}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:44px;align-items:center}
+.cover{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px;box-shadow:0 0 0 2px #ff4fd855,0 24px 70px #000a,0 0 60px #ff4fd833;transform:rotate(-2deg)}
+.hero h1{font-size:clamp(48px,8vw,92px);margin:10px 0 6px;text-shadow:4px 4px 0 #000}
+.hero h1 span{display:block;font-size:1.25em;background:linear-gradient(180deg,var(--o),var(--p) 60%,#8a3cff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.tagline{font-size:clamp(19px,2.4vw,24px);font-weight:600;margin:0 0 22px;max-width:30ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px}
+.badge{display:inline-flex;align-items:center;gap:10px;border:2px solid var(--ink);border-radius:8px;padding:6px 10px;font-size:13px;line-height:1.25;max-width:330px;background:#0008}
+.badge b{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:30px;line-height:1;border:2px solid var(--ink);border-radius:4px;padding:0 6px}
+
+/* recensioni */
+section{padding:64px 0}
+.sec-title{font-size:clamp(34px,5vw,54px);margin:8px 0 10px}
+.sec-sub{color:var(--muted);margin:0 0 30px;max-width:60ch}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 20px 16px;margin:0}
+.quote blockquote{margin:0 0 10px;font-size:20px;font-weight:600}
+.quote figcaption{color:var(--muted);font-size:14px}
+.stars{color:var(--y);letter-spacing:2px;font-size:15px;margin-bottom:8px}
+
+/* cast */
+#cast{background:linear-gradient(180deg,#120c1a,#1a0f26 30%,#120c1a)}
+.hero-card{display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:center;background:var(--card);border:2px solid #ff4fd866;border-radius:18px;padding:22px;margin-bottom:22px;box-shadow:0 0 40px #ff4fd822}
+.cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px 18px;display:flex;flex-direction:column;gap:8px;transition:transform .2s}
+.card:hover{transform:translateY(-4px) rotate(-.5deg)}
+canvas.ritratto{width:100%;aspect-ratio:4/5;border-radius:12px;display:block;background:#150f20}
+.hero-card canvas.ritratto{width:240px}
+.card h3,.hero-card h3{font-size:30px}
+.hero-card h3{font-size:44px}
+.role{color:var(--o);font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.desc{margin:0;color:var(--muted);font-size:15px}
+.catch{margin:2px 0 0;font-weight:600;font-style:italic}
+.stats{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:5px;font-size:13px}
+.stats li{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+.bar{display:inline-flex;gap:2px}
+.bar i{display:block;width:8px;height:10px;border-radius:2px;background:#3a2e4e}
+.bar i.on{background:linear-gradient(180deg,var(--p),#a52ad6)}
+.source{margin-top:18px}
+
+/* cosa c'è */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.feat .ico{font-size:30px;line-height:1}
+.feat h3{font-size:24px;margin:10px 0 6px}
+.feat p{margin:0;color:var(--muted);font-size:15px}
+.req{width:100%;table-layout:fixed;overflow-wrap:anywhere;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;font-size:16px}
+.req th,.req td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.req th{font-weight:800;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.req tr:last-child td{border-bottom:0}
+.final{text-align:center;padding:72px 0}
+.final h2{font-size:clamp(36px,6vw,64px);margin-bottom:18px}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:14px}
+
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr;gap:28px}
+  .cover{max-width:380px;margin:0 auto}
+  .hero-card{grid-template-columns:1fr;text-align:left}
+  .hero-card canvas.ritratto{width:100%;max-width:260px}
+  section{padding:48px 0}
+  .req{font-size:14px}.req th,.req td{padding:10px 8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.cover{transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="cover" src="schioppo%20VZ.jpeg" alt="Copertina di Schioppo di Rissa VZ: Vasco, pelato e barbuto, davanti alle insegne al neon di una città al tramonto">
+    <div>
+      <div class="kicker">Finalmente su browser · e solo lì</div>
+      <h1>Schioppo di Rissa <span>VZ</span></h1>
+      <p class="tagline">Il GTA che nessuno aveva chiesto. Con <span id="heroName">Vasco</span>, la sua banda e una città dove i problemi si risolvono a schiaffi.</p>
+      <div class="ctas">
+        <a class="btn primary" href="SDR_VZ.html">▶ Gioca adesso</a>
+        <a class="btn ghost" href="#cast">👥 Conosci il cast</a>
+      </div>
+      <p class="small">Gratis. E vale ogni centesimo.</p>
+      <div class="badge"><b>V</b><span>Classificazione <strong>V per Vergogna</strong>. Contiene schiaffi, salsa, Gratta e Vinci e guida spericolata.</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="recensioni">
+    <div class="wrap">
+      <div class="kicker">Rassegna stampa</div>
+      <h2 class="sec-title">Dicono di noi</h2>
+      <p class="sec-sub">Recensioni raccolte da persone che, a onor del vero, non hanno mai giocato.</p>
+      <div class="quotes" id="quotes"></div>
+    </div>
+  </section>
+
+  <section id="cast">
+    <div class="wrap">
+      <div class="kicker">Il cast</div>
+      <h2 class="sec-title">Gente vera. Purtroppo.</h2>
+      <p class="sec-sub">Ogni personaggio è ispirato a una persona realmente esistente, che ha dato il consenso dopo un'attenta trattativa a base di birre.</p>
+      <div id="protagonista"></div>
+      <div class="cast" id="amici"></div>
+      <p class="small source" id="castSource"></p>
+    </div>
+  </section>
+
+  <section id="gioco">
+    <div class="wrap">
+      <div class="kicker">Caratteristiche</div>
+      <h2 class="sec-title">Cosa c'è nel gioco</h2>
+      <p class="sec-sub">Tutto quello che ti aspetti da un open world, ma più piccolo e con meno budget.</p>
+      <div class="features">
+        <div class="feat"><div class="ico">🏙️</div><h3>Una città intera</h3><p>Trentasei isolati, un ospedale, la polizia, un tabacchi. Grande quasi quanto il quartiere vero, ma con più parcheggio.</p></div>
+        <div class="feat"><div class="ico">👋</div><h3>Un sistema di combattimento</h3><p>Si chiama "schiaffo". Ha una sola mossa ed è perfetta così.</p></div>
+        <div class="feat"><div class="ico">🥊</div><h3>Boxe</h3><p>Sparring in prima persona: schivi, pari, contrattacchi. Esattamente come Vasco in palestra, ma senza il dolore.</p></div>
+        <div class="feat"><div class="ico">💃</div><h3>Salsa</h3><p>Un rhythm game sulle frecce. Se sbagli, Vasco balla lo stesso: è un professionista.</p></div>
+        <div class="feat"><div class="ico">🍺</div><h3>Missioni profonde</h3><p>Gratta e Vinci, birre, panini. Una trama che affronta i grandi temi del nostro tempo: chi paga il giro.</p></div>
+        <div class="feat"><div class="ico">🚓</div><h3>Polizia intelligente</h3><p>Dopo anni di ricerca, le volanti hanno imparato a usare le strade. Il prossimo passo: le frecce.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="requisiti">
+    <div class="wrap">
+      <div class="kicker">Prima di installare (non c'è niente da installare)</div>
+      <h2 class="sec-title">Requisiti di sistema</h2>
+      <table class="req">
+        <thead><tr><th scope="col"></th><th scope="col">Minimi</th><th scope="col">Consigliati</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dispositivo</strong></td><td>Qualsiasi cosa con un browser</td><td>Lo stesso, ma pulito dalle briciole</td></tr>
+          <tr><td><strong>Controlli</strong></td><td>Tastiera o dita</td><td>Dita agili, da salsero</td></tr>
+          <tr><td><strong>Audio</strong></td><td>Facoltativo</td><td>Obbligatorio, per la salsa</td></tr>
+          <tr><td><strong>Giocatori</strong></td><td>Uno</td><td>Uno, più tre amici che commentano da dietro</td></tr>
+          <tr><td><strong>Aspettative</strong></td><td>Basse</td><td>Ancora più basse</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Basta leggere. Vai a menare.</h2>
+      <a class="btn primary" href="SDR_VZ.html">▶ Gioca adesso</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Nessun amico è stato maltrattato durante lo sviluppo. Quasi.<br>
+    Fatto in casa, senza budget, con molto amore e poche ore di sonno. I personaggi qui sopra sono disegnati dal gioco stesso.
+  </div>
+</footer>
+
+<script src="personaggi.js"></script>
+<script>
+{
+// ---- da dove prendo il cast: quello pubblicato sul sito, poi quello salvato in questo browser, poi quello di esempio ----
+async function loadCastForSite(){
+  try{const r=await fetch("cast.json",{cache:"no-cache"});if(r.ok){const c=parseCast(await r.json());if(c)return{c,src:"sito"}}}catch(e){}
+  try{const s=localStorage.getItem(KEY);if(s){const c=parseCast(JSON.parse(s));if(c)return{c,src:"locale"}}}catch(e){}
+  return{c:prepCast(clone(DEFAULT_CAST)),src:"esempio"};
+}
+// numeri "casuali" ma sempre uguali per lo stesso nome, così le schede non cambiano a ogni visita
+function seeded(str){let h=2166136261;for(const ch of str){h^=ch.codePointAt(0);h=Math.imul(h,16777619)}return()=>{h^=h<<13;h^=h>>>17;h^=h<<5;return((h>>>0)%10000)/10000}}
+
+// ---- descrizione ironica ricavata dall'aspetto ----
+const TRAITS={
+  barba:{barbone:"barba da filosofo greco",barba:"barba curata (dice lui)",pizzetto:"pizzetto d'ordinanza",baffi:"baffi da sceriffo",sfatta:"barba di tre giorni, da tre anni"},
+  occhiali:{sole:"occhiali da sole anche di notte",vista:"occhiali da intellettuale"},
+  cappello:{cappellino:"cappellino che non toglie mai",berretto:"berretto anche ad agosto",coppola:"coppola di famiglia"},
+  extra:{catena:"catena d'oro (forse)",sigaretta:"fuma, ma smette lunedì",cuffie:"non ti sente: ha le cuffie"},
+  pettinatura:{pelato:"aerodinamico",cresta:"cresta da gallo",ricci:"ricci indomabili",coda:"coda di cavallo d'assalto",lunghi:"capelli da spot dello shampoo"},
+  fisico:{robusto:"fisico da bomber",magro:"secco come un grissino"},
+  altezza:{alto:"vede i concerti da sopra",basso:"compatto e pericoloso"},
+  testa:{grande:"testone di categoria",piccola:"testa piccola ma piena di idee"},
+  vestito:{giacca:"giacca d'ordinanza",canotta:"canotta in tutte le stagioni",felpa:"vive in felpa"}
+};
+const ROLES=["Esperto di scorciatoie","Responsabile del giro di birre","Autista designato (suo malgrado)","Consulente per i Gratta e Vinci","Ultimo ad arrivare, primo a lamentarsi","Addetto alle foto di gruppo","Tesoriere della comitiva (non pagato)","Teorico del 'ancora una e andiamo'"];
+const STATS=["Forza dello schiaffo","Ritmo nella salsa","Puntualità","Guida sportiva","Resistenza alla birra","Pazienza","Senso dell'orientamento","Capacità di pagare il giro","Affidabilità al telefono"];
+function traitsOf(cfg,rnd){const t=[];for(const k in TRAITS){const v=TRAITS[k][cfg[k]];if(v)t.push(v)}t.sort(()=>rnd()-.5);return t.slice(0,2)}
+function bar(n){const s=document.createElement("span");s.className="bar";s.setAttribute("aria-hidden","true");for(let i=0;i<10;i++){const b=document.createElement("i");if(i<n)b.className="on";s.appendChild(b)}return s}
+function statsList(pairs){const ul=document.createElement("ul");ul.className="stats";for(const[name,val]of pairs){const li=document.createElement("li"),l=document.createElement("span");l.textContent=name;li.title=`${name}: ${val}/10`;li.append(l,bar(val));const sr=document.createElement("span");sr.className="sr";sr.style.cssText="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)";sr.textContent=` ${val} su 10`;li.appendChild(sr);ul.appendChild(li)}return ul}
+
+// ---- ritratti: disegnati con lo stesso codice del gioco ----
+const portraits=[];
+function drawPortrait(cv,cfg,t){
+  const dpr=Math.min(2,devicePixelRatio||1),W=cv.clientWidth||220,H=cv.clientHeight||275;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
+  const g=cv.getContext("2d");g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);
+  const bg=g.createRadialGradient(W/2,H*.38,10,W/2,H*.5,H*.75);bg.addColorStop(0,"#4a2f66");bg.addColorStop(1,"#150f20");g.fillStyle=bg;g.fillRect(0,0,W,H);
+  g.fillStyle="rgba(255,79,216,.25)";g.beginPath();g.ellipse(W/2,H*.9,W*.28,H*.035,0,0,TAU);g.fill();
+  const k=H/82,bob=Math.abs(Math.sin(t*2.4))*2.2;// stessa scala per tutti: si vedono alti e bassi
+  g.save();g.translate(W/2,H*.9-bob);g.scale(k,k);drawFigure(g,cfg,0,0,0,0);g.restore();
+}
+const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function redrawAll(t){for(const[cv,cfg]of portraits)drawPortrait(cv,cfg,still?0:t)}
+onFaceLoad=()=>redrawAll(performance.now()/1000);
+function loop(t){redrawAll(t/1000);requestAnimationFrame(loop)}
+
+function portrait(cfg){const cv=document.createElement("canvas");cv.className="ritratto";cv.setAttribute("role","img");cv.setAttribute("aria-label",`Ritratto di ${cfg.nome}`);portraits.push([cv,cfg]);return cv}
+
+function heroCard(cfg){
+  const d=document.createElement("article");d.className="hero-card";
+  const body=document.createElement("div");
+  const role=document.createElement("div");role.className="role";role.textContent="Il protagonista";
+  const h=document.createElement("h3");h.textContent=cfg.nome;
+  const p=document.createElement("p");p.className="desc";
+  p.textContent=`Pugile di giorno, ballerino di salsa di notte, eroe suo malgrado. ${traitsOf(cfg,seeded(cfg.nome)).map(s=>s[0].toUpperCase()+s.slice(1)).join(". ")}${traitsOf(cfg,seeded(cfg.nome)).length?".":""} Risolve i problemi del quartiere un Gratta e Vinci alla volta.`;
+  body.append(role,h,p,statsList([["Boxe",10],["Salsa",10],["Modestia",2],["Rispetto del codice della strada",1]]));
+  d.append(portrait(cfg),body);return d;
+}
+function friendCard(cfg){
+  const rnd=seeded(cfg.nome),d=document.createElement("article");d.className="card";
+  const h=document.createElement("h3");h.textContent=cfg.nome;
+  const role=document.createElement("div");role.className="role";role.textContent=ROLES[Math.floor(rnd()*ROLES.length)];
+  const tr=traitsOf(cfg,rnd),p=document.createElement("p");p.className="desc";p.textContent=tr.length?tr.map(s=>s[0].toUpperCase()+s.slice(1)).join(" · "):"Look sobrio, anima selvaggia";
+  d.append(portrait(cfg),h,role,p);
+  if(cfg.frasi&&cfg.frasi.length){const q=document.createElement("p");q.className="catch";q.textContent=`«${cfg.frasi[0]}»`;d.appendChild(q)}
+  const pool=[...STATS].sort(()=>rnd()-.5).slice(0,3);d.appendChild(statsList(pool.map(s=>[s,1+Math.floor(rnd()*10)])));
+  return d;
+}
+function quotes(cast){
+  const out=[],rnd=seeded("recensioni");
+  const fromFriends=cast.amici.filter(a=>a.frasi&&a.frasi.length).sort(()=>rnd()-.5).slice(0,3)
+    .map(a=>[a.frasi[Math.floor(rnd()*a.frasi.length)],`${a.nome}, dopo averci giocato`,"★★★★★"]);
+  out.push(...fromFriends,["Lo vuoi un master?","Veronica, in qualunque momento","★★☆☆☆"],["Almeno esce di casa. Virtualmente.","Una mamma preoccupata","★★★★☆"],["Ho perso tre ore. Le rivoglio.","Un tester anonimo","★★★★★"]);
+  const box=document.getElementById("quotes");
+  for(const[text,who,stars]of out.slice(0,6)){
+    const f=document.createElement("figure");f.className="quote";
+    const s=document.createElement("div");s.className="stars";s.textContent=stars;s.setAttribute("aria-label",`${stars.split("★").length-1} stelle su 5`);
+    const b=document.createElement("blockquote");b.textContent=`«${text}»`;const c=document.createElement("figcaption");c.textContent=`— ${who}`;
+    f.append(s,b,c);box.appendChild(f);
+  }
+}
+
+loadCastForSite().then(({c,src})=>{
+  document.getElementById("heroName").textContent=c.protagonista.nome;
+  document.getElementById("protagonista").appendChild(heroCard(c.protagonista));
+  const box=document.getElementById("amici");for(const a of c.amici)box.appendChild(friendCard(a));
+  quotes(c);
+  document.getElementById("castSource").textContent=src==="sito"?"":src==="locale"?"Stai vedendo il cast salvato in questo browser. Online si vedrà quello del file cast.json.":"Questo è il cast di esempio: personalizzalo nel gioco ed esporta cast.json per vedere qui i tuoi amici.";
+  requestAnimationFrame(loop);addEventListener("resize",()=>redrawAll(performance.now()/1000));
+});
+}
+</script>
+</body>
+</html>

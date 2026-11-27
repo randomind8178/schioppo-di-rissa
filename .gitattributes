@@ -1,0 +1,8 @@
+# testo con a-capo uniformi su tutti i computer
+* text=auto eol=lf
+
+# file binari: da non toccare mai
+*.mp3 binary
+*.jpeg binary
+*.jpg binary
+*.png binary

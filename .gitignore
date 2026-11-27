@@ -1,0 +1,13 @@
+# file di sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# impostazioni dell'editor
+.vscode/
+
+# roba tua che non va nel repo (prove, foto originali, appunti)
+privato/
+
+# copie di sicurezza
+*.backup.html
