@@ -1,0 +1,183 @@
+{
+  "gioco": "schioppo-di-rissa-vz",
+  "versione": 1,
+  "cast": {
+    "protagonista": {
+      "nome": "Vasco",
+      "colore": "#000000",
+      "giacca": "#3b2a20",
+      "pantaloni": "#2c3e50",
+      "capelli": "#303030",
+      "pelle": "#ffdbac",
+      "pettinatura": "pelato",
+      "barba": "barba",
+      "vestito": "canotta",
+      "fisico": "normale",
+      "cappelloCol": "#c0392b",
+      "occhiali": "no",
+      "cappello": "no",
+      "altezza": "alto",
+      "testa": "piccola",
+      "extra": "no",
+      "foto": null,
+      "fotoSrc": null,
+      "crop": {
+        "cx": 0.5,
+        "cy": 0.5,
+        "z": 1
+      }
+    },
+    "amici": [
+      {
+        "nome": "Angela",
+        "colore": "#0535f5",
+        "capelli": "#1a1a1a",
+        "pelle": "#f1c27d",
+        "barba": "no",
+        "extra": "no",
+        "frasi": [
+          "Aò, offri tu stasera?",
+          "Me devi ancora 10 euro!",
+          "Ho la macchina dal meccanico…"
+        ],
+        "giacca": "#2a2522",
+        "pantaloni": "#2f363c",
+        "cappelloCol": "#c0392b",
+        "pettinatura": "lunghi",
+        "occhiali": "vista",
+        "cappello": "no",
+        "vestito": "canotta",
+        "fisico": "robusto",
+        "altezza": "normale",
+        "testa": "normale",
+        "foto": null,
+        "fotoSrc": null,
+        "crop": {
+          "cx": 0.5,
+          "cy": 0.5,
+          "z": 1
+        }
+      },
+      {
+        "nome": "Veronica",
+        "colore": "#9b59b6",
+        "capelli": "#7a4a1e",
+        "pelle": "#ffdbac",
+        "pettinatura": "lunghi",
+        "occhiali": "vista",
+        "vestito": "felpa",
+        "altezza": "normale",
+        "frasi": [
+          "Lo vuoi un master?",
+          "Devo andare a casa, me l'ha detto Chat GPT",
+          "Ora mi faccio una bella tripel"
+        ],
+        "giacca": "#2a2522",
+        "pantaloni": "#2c3e50",
+        "cappelloCol": "#c0392b",
+        "barba": "no",
+        "cappello": "no",
+        "fisico": "normale",
+        "testa": "normale",
+        "extra": "no",
+        "foto": null,
+        "fotoSrc": null,
+        "crop": {
+          "cx": 0.5,
+          "cy": 0.5,
+          "z": 1
+        }
+      },
+      {
+        "nome": "Davide",
+        "colore": "#000000",
+        "capelli": "#707070",
+        "pelle": "#e0ac69",
+        "pettinatura": "pelato",
+        "cappello": "no",
+        "cappelloCol": "#2980b9",
+        "fisico": "normale",
+        "altezza": "alto",
+        "frasi": [
+          "IL GIGANTE DI BREEEMAAA",
+          "Io domani lavoro eh…",
+          "Ultima birra e andiamo, giuro"
+        ],
+        "giacca": "#2a2522",
+        "pantaloni": "#2c3e50",
+        "barba": "barba",
+        "occhiali": "vista",
+        "vestito": "felpa",
+        "testa": "normale",
+        "extra": "no",
+        "foto": null,
+        "fotoSrc": null,
+        "crop": {
+          "cx": 0.5,
+          "cy": 0.5,
+          "z": 1
+        }
+      },
+      {
+        "nome": "Michela",
+        "colore": "#ff2600",
+        "capelli": "#4e4c4b",
+        "pelle": "#f1c27d",
+        "pettinatura": "lunghi",
+        "occhiali": "vista",
+        "vestito": "canotta",
+        "frasi": [
+          "Hai finito con 'sti videogiochi?",
+          "Andiamo a ballare sabato?",
+          "Almeno per strada ti incontro!"
+        ],
+        "giacca": "#2a2522",
+        "pantaloni": "#a2a1d3",
+        "cappelloCol": "#c0392b",
+        "barba": "no",
+        "cappello": "no",
+        "fisico": "magro",
+        "altezza": "alto",
+        "testa": "normale",
+        "extra": "catena",
+        "foto": null,
+        "fotoSrc": null,
+        "crop": {
+          "cx": 0.5,
+          "cy": 0.5,
+          "z": 1
+        }
+      },
+      {
+        "nome": "Mario",
+        "colore": "#235333",
+        "capelli": "#3c2f2f",
+        "pelle": "#c68642",
+        "pettinatura": "corti",
+        "barba": "pizzetto",
+        "cappello": "no",
+        "cappelloCol": "#34495e",
+        "extra": "no",
+        "fisico": "magro",
+        "testa": "normale",
+        "frasi": [
+          "Madonna suricata",
+          "Buondìo",
+          "La senti sta voglia di non fare un cazzo?"
+        ],
+        "giacca": "#2a2522",
+        "pantaloni": "#404f5e",
+        "occhiali": "vista",
+        "vestito": "maglietta",
+        "altezza": "normale",
+        "foto": null,
+        "fotoSrc": null,
+        "crop": {
+          "cx": 0.5,
+          "cy": 0.5,
+          "z": 1
+        }
+      }
+    ]
+  }
+}
