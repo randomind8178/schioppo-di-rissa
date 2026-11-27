@@ -186,7 +186,7 @@ const GRUDGE_LINES=["Ah sì? Mo' te lo ridò!","Questa me la paghi!","Ma che te 
 const EVEN_LINES=["Ecco. Ora siamo pari 🍻","Così impari!","Pace? Pace. 🤝"];
 const FLEE_LINES=["Aiuto!!","Mamma mia!","Chiamo la polizia!","Ma che ho fatto?!"];
 const FIGHT_LINES=["Vieni qua se hai coraggio!","Ah sì?!","Mo' so' guai tuoi!"];
-const GANG_LINES=["Questo bar è nostro!","Borgata Nord comanda!","Che guardi?!","Smamma!","Qui non entri!"];
+const GANG_LINES=["Questo bar è nostro!","I Laziali Gender comandano!","Che guardi?!","Smamma!","Qui non entri!"];
 const GANG_FLEE=["Ce ne andiamo… per ora!","Ritirata!!","Ve la faremo pagare!","Mamma!!"];
 const ALLY_LINES=["Arrivo fra!","Lascia fa' a me!","Tutti addosso!","Ci sono io!"];
 const COP_LINES=["Alt! Polizia!","Fermo lì!","Documenti!","È in arresto!"];
@@ -306,7 +306,7 @@ let inCar=null;
 function playerPos(){return inCar?{x:inCar.x,y:inCar.y}:{x:player.x,y:player.y}}
 for(let n=0;n<14;n++)cars.push(makeTraffic());
 
-// role: friend (amici del cast) · passante · tizio (derubato dell'auto) · gang (Borgata Nord) · cop (poliziotto a piedi)
+// role: friend (amici del cast) · passante · tizio (derubato dell'auto) · gang (I Laziali Gender) · cop (poliziotto a piedi)
 const ROLE_HP={friend:3,passante:2,tizio:2,gang:4,cop:5};
 function makePerson(cfg,x,y,role){const p={cfg,x,y,tx:x,ty:y,state:"idle",timer:rand(.5,2),face:1,walk:0,moving:false,bubble:null,role,friend:role==="friend",talkCd:rand(0,3),rot:0,spin:0,vx:0,vy:0,kx:0,ky:0,stuck:0,det:null,life:Infinity,party:0,speed:rand(55,80),
   hp:ROLE_HP[role]||2,aggroT:0,flee:0,atkCd:0,punchT:0,grudge:false,ally:false,defeated:false,reported:false,home:null};p.maxHp=p.hp;return p}
@@ -379,12 +379,12 @@ const MISSIONS=[
     {type:"goto",place:"TABACCHI",text:"🎟️ Vai al TABACCHI a comprare i Gratta e Vinci",note:"Gratta e Vinci presi! 🎟️"},
     {type:"friend",text:f=>`🎟️ Porta i Gratta e Vinci a ${f} (è in giro a piedi)`,tip:150,
       thanks:["Vediamo… niente. Come sempre 😩","Ho vinto 2 euro! Offro io! …no.","Grazie fra! Se vinco ti offro una birra","Gratta gratta… NIENTE! Me lo sentivo"]},
-    {type:"fight",place:"BAR DA GINO",gang:3,text:n=>`🥊 Quelli di Borgata Nord hanno occupato il BAR DA GINO! Cacciali (${rimasti(n)})`}
+    {type:"fight",place:"BAR DA GINO",gang:3,text:n=>`🥊 I Laziali Gender hanno occupato il BAR DA GINO! Cacciali (${rimasti(n)})`}
   ]},
   {title:"La cena da Davide",reward:800,win:"si mangia da Davide! 🍻🥪",party:"CASA DI DAVIDE",steps:[
     {type:"goto",place:"SUPERMERCATO",text:"🍺 Vai al SUPERMERCATO a prendere le birre",note:"Birre prese! 🍺"},
-    {type:"fight",place:"SALOON DEL PANINO",gang:5,text:n=>`🥪 Borgata Nord ha preso d'assalto il SALOON DEL PANINO! Cacciali e prendi i panini (${rimasti(n)})`,note:"Panini presi! 🥪"},
-    {type:"gauntlet",place:"CASA DI DAVIDE",gang:12,text:n=>`🏠 Porta birre e panini a CASA DI DAVIDE. Le vie attorno sono piene di Borgata Nord (${n} in zona)!`}
+    {type:"fight",place:"SALOON DEL PANINO",gang:5,text:n=>`🥪 I Laziali Gender hanno preso d'assalto il SALOON DEL PANINO! Cacciali e prendi i panini (${rimasti(n)})`,note:"Panini presi! 🥪"},
+    {type:"gauntlet",place:"CASA DI DAVIDE",gang:12,text:n=>`🏠 Porta birre e panini a CASA DI DAVIDE. Le vie attorno sono piene di Laziali Gender (${n} in zona)!`}
   ]}
 ];
 const mission={idx:0,step:0,tag:"0-0",friend:null,spawned:false,waiting:false,nextT:0,done:false};
